@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tomsk weather</string>
+    <string name="logo">Check weather</string>
+    <string name="hint_text">Just write any text here</string>
+    <string name="no_user_input">write any text pls(((</string>
+    <string name="btn_text">CHECK IT OUT</string>
+</resources>
