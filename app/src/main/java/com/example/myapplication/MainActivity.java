@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,13 +37,21 @@ public class MainActivity extends AppCompatActivity {
     private TextView fl_tsk;
     private TextView wind_tsk;
 
+    private ViewFlipper viewFlipper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);//switch night mod off
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button main_btn = findViewById(R.id.mainButton);
+        viewFlipper = findViewById(R.id.view_flipper);
+        /*viewFlipper.setFlipInterval(2000); //auto flip
+        viewFlipper.startFlipping();*/
+
+
+
+        Button main_btn = findViewById(R.id.tsk_btn);
 
         temp_spb = findViewById(R.id.temp_spb);
         temp_tsk = findViewById(R.id.temp_tsk);
@@ -66,6 +76,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    public void previousView(View v) {
+        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
+        viewFlipper.showPrevious();
+    }
+
+    public void nextView(View v) {
+        viewFlipper.setInAnimation(this, R.anim.slide_in_right);
+        viewFlipper.setOutAnimation(this, R.anim.slide_out_left);
+        viewFlipper.showNext();
+    }
+
+
     private class GetURLData extends AsyncTask<String,String,String>{//будет работать асинхронно
 
         protected void onPreExecute(){
