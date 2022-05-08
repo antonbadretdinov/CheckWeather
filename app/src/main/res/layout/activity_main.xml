@@ -6,147 +6,178 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/logo"
+    <ViewFlipper
+        android:id="@+id/view_flipper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:fontFamily="@font/nunito_sans"
-        android:text="@string/logo"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp" />
+        android:layout_height="match_parent"
+        android:inAnimation="@android:anim/slide_in_left"
+        android:outAnimation="@android:anim/slide_out_right">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/tsk"
+                android:layout_width="match_parent"
+                android:layout_height="260sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="0dp"
+                app:srcCompat="@drawable/rect_tsk" />
+
+            <TextView
+                android:id="@+id/temp_tsk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="160sp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="135sp"
+                android:layout_marginEnd="90dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                tools:text="." />
+
+            <TextView
+                android:id="@+id/fl_tsk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/temp_tsk"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="160sp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="90dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                tools:text="." />
+
+            <TextView
+                android:id="@+id/wind_tsk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fl_tsk"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="160sp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="90dp"
+                android:fontFamily="@font/nunito_bold"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                tools:text="." />
+
+            <Button
+                android:id="@+id/tsk_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tsk"
+                android:layout_marginHorizontal="90sp"
+                android:layout_marginTop="35sp"
+                android:backgroundTint="@color/btn_gray"
+                android:fontFamily="@font/nunito_bold"
+                android:text="@string/btn_text"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/spb"
+            android:layout_width="match_parent"
+            android:layout_height="260sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="0dp"
+            app:srcCompat="@drawable/rect_spb" />
+
+        <TextView
+            android:id="@+id/temp_spb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160sp"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="135sp"
+            android:layout_marginEnd="90dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:text="." />
+
+        <TextView
+            android:id="@+id/fl_spb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/temp_spb"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160sp"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="90dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:text="." />
+
+        <TextView
+            android:id="@+id/wind_spb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fl_spb"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="160sp"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="90dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:text="." />
+
+        <Button
+            android:id="@+id/spb_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spb"
+            android:layout_marginHorizontal="90sp"
+            android:layout_marginTop="35sp"
+            android:backgroundTint="@color/btn_gray"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/btn_text"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    </ViewFlipper>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:onClick="previousView"
+        android:text="Previous" />
 
     <Button
-        android:id="@+id/mainButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tsk"
-        android:layout_marginHorizontal="90sp"
-        android:layout_marginTop="35sp"
-        android:backgroundTint="@color/btn_gray"
-        android:fontFamily="@font/nunito_bold"
-        android:text="@string/btn_text"
-        android:textColor="@color/black" />
-
-
-    <ImageView
-        android:id="@+id/spb"
-        android:layout_width="match_parent"
-        android:layout_height="260sp"
-        android:layout_below="@id/logo"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="20sp"
-        android:layout_marginEnd="0dp"
-        app:srcCompat="@drawable/rect_spb" />
-
-    <ImageView
-        android:id="@+id/tsk"
-        android:layout_width="match_parent"
-        android:layout_height="260sp"
-        android:layout_below="@id/spb"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="10sp"
-        app:srcCompat="@drawable/rect_tsk" />
-
-    <TextView
-        android:id="@+id/temp_spb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="135sp"
-        android:layout_marginEnd="90dp"
-        android:fontFamily="@font/nunito_bold"
-        android:textAlignment="center"
-        tools:text="."
-        android:textColor="@color/black"
-         />
-
-    <TextView
-        android:id="@+id/fl_spb"
-        android:textAlignment="center"
-        tools:text="."
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/temp_spb"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="90dp" />
-    <TextView
-        android:id="@+id/wind_spb"
-        android:textAlignment="center"
-        tools:text="."
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fl_spb"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="90dp" />
-
-    <TextView
-        android:id="@+id/temp_tsk"
-        android:textAlignment="center"
-        tools:text="."
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="406sp"
-        android:layout_marginEnd="90dp" />
-
-    <TextView
-        android:id="@+id/fl_tsk"
-        android:textAlignment="center"
-        tools:text="."
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/temp_tsk"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="90dp" />
-    <TextView
-        android:id="@+id/wind_tsk"
-        android:textAlignment="center"
-        tools:text="."
-        android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fl_tsk"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="160sp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="90dp" />
+        android:layout_margin="16dp"
+        android:onClick="nextView"
+        android:text="Next" />
 
 </RelativeLayout>
