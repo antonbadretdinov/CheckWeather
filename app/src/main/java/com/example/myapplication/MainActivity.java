@@ -139,9 +139,9 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 JSONObject jsonObject = new JSONObject(result);
-                temp_tsk.setText(jsonObject.getJSONObject("main").getDouble("temp")+"°C");
-                fl_tsk.setText(jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
-                wind_tsk.setText(jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
+                temp_tsk.setText((int)jsonObject.getJSONObject("main").getDouble("temp")+"°C");
+                fl_tsk.setText((int)jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
+                wind_tsk.setText((int)jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -191,16 +191,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             return null;
             }
-           @SuppressLint("SetTextI18n")
+           @SuppressLint({"SetTextI18n"})
            @Override
            protected void onPostExecute(String result){
             super.onPostExecute(result);
 
                try {
                    JSONObject jsonObject = new JSONObject(result);
-                   temp_spb.setText(jsonObject.getJSONObject("main").getDouble("temp")+"°C");
-                   fl_spb.setText(jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
-                   wind_spb.setText(jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
+                   temp_spb.setText(((int) jsonObject.getJSONObject("main").getDouble("temp"))+"°C");
+                   fl_spb.setText((int)jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
+                   wind_spb.setText((int)jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
                } catch (JSONException e) {
                    e.printStackTrace();
                }
