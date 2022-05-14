@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import org.json.JSONException;
@@ -23,19 +19,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
-
+    DateFormat df = new SimpleDateFormat("HH:mm", Locale.getDefault());
+    private TextView descr_spb;
     private TextView temp_spb;
     private TextView fl_spb;
     private TextView wind_spb;
 
+    private TextView descr_tsk;
     private TextView temp_tsk;
     private TextView fl_tsk;
     private TextView wind_tsk;
+    private TextView time_tsk;
 
     private ViewFlipper viewFlipper;
 
@@ -59,11 +60,12 @@ public class MainActivity extends AppCompatActivity {
         fl_tsk = findViewById(R.id.fl_tsk);
         wind_spb = findViewById(R.id.wind_spb);
         wind_tsk = findViewById(R.id.wind_tsk);
+        descr_tsk = findViewById(R.id.descr_spb);
+        time_tsk = findViewById(R.id.time_tsk);
 
 
-
-        String url = "https://api.openweathermap.org/data/2.5/weather?lat=56.501041&lon=84.992455&appid=be59c27f4f9fe68c807fdd8034c9e97b&units=metric&lang=ru";
-        String url_spb = "https://api.openweathermap.org/data/2.5/weather?lat=59.937500&lon=30.308611&appid=be59c27f4f9fe68c807fdd8034c9e97b&units=metric&lang=ru";
+        String url = "https://api.openweathermap.org/data/2.5/weather?lat=56.501041&lon=84.992455&appid=be59c27f4f9fe68c807fdd8034c9e97b&units=metric&lang=en";
+        String url_spb = "https://api.openweathermap.org/data/2.5/weather?lat=59.937500&lon=30.308611&appid=be59c27f4f9fe68c807fdd8034c9e97b&units=metric&lang=en";
 
 
         main_btn.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private class GetURLData extends AsyncTask<String,String,String>{//будет работать асинхронно
-
         protected void onPreExecute(){
             super.onPreExecute();
+            descr_tsk.setText("...");
             temp_tsk.setText("...");
             wind_tsk.setText("...");
             fl_tsk.setText("...");
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 InputStream stream = connection.getInputStream();//считываем полученный поток
                 reader = new BufferedReader(new InputStreamReader(stream));//для считывания в формате строки
 
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 String line = "";
 
                 while((line= reader.readLine()) != null){
@@ -138,10 +140,12 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             try {
+                time_tsk.setText(df.format(Calendar.getInstance().getTime()));
                 JSONObject jsonObject = new JSONObject(result);
                 temp_tsk.setText((int)jsonObject.getJSONObject("main").getDouble("temp")+"°C");
                 fl_tsk.setText((int)jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
                 wind_tsk.setText((int)jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
+                descr_tsk.setText((CharSequence) jsonObject.getJSONArray("weather").getJSONObject(0).getString("description"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
