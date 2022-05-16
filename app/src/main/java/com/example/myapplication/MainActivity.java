@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView temp_spb;
     private TextView fl_spb;
     private TextView wind_spb;
+    private TextView time_spb;
+
 
     private TextView descr_tsk;
     private TextView temp_tsk;
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button main_btn = findViewById(R.id.tsk_btn);
+        Button main_btn_spb = findViewById(R.id.spb_btn);
 
         temp_spb = findViewById(R.id.temp_spb);
         temp_tsk = findViewById(R.id.temp_tsk);
@@ -60,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
         fl_tsk = findViewById(R.id.fl_tsk);
         wind_spb = findViewById(R.id.wind_spb);
         wind_tsk = findViewById(R.id.wind_tsk);
-        descr_tsk = findViewById(R.id.descr_spb);
+        descr_tsk = findViewById(R.id.descr_tsk);
+        descr_spb = findViewById(R.id.descr_spb);
         time_tsk = findViewById(R.id.time_tsk);
+        time_spb = findViewById(R.id.time_spb);
 
 
         String url = "https://api.openweathermap.org/data/2.5/weather?lat=56.501041&lon=84.992455&appid=be59c27f4f9fe68c807fdd8034c9e97b&units=metric&lang=en";
@@ -73,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 GetURLData getURLData = new GetURLData();
                 getURLData.execute(url);
+            }
+        });
+
+        main_btn_spb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 GetURLData2 getURLData2 = new GetURLData2();
                 getURLData2.execute(url_spb);
             }
@@ -201,10 +212,12 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
                try {
+                   time_spb.setText(df.format(Calendar.getInstance().getTime()));
                    JSONObject jsonObject = new JSONObject(result);
                    temp_spb.setText(((int) jsonObject.getJSONObject("main").getDouble("temp"))+"°C");
                    fl_spb.setText((int)jsonObject.getJSONObject("main").getDouble("feels_like")+"°C");
                    wind_spb.setText((int)jsonObject.getJSONObject("wind").getDouble("speed")+" m/s");
+                   descr_spb.setText((CharSequence) jsonObject.getJSONArray("weather").getJSONObject(0).getString("description"));
                } catch (JSONException e) {
                    e.printStackTrace();
                }
