@@ -133,6 +133,7 @@
 
             <ImageView
                 android:id="@+id/cloud_tsk"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/main_block"
@@ -142,6 +143,30 @@
                 android:layout_marginEnd="70dp"
                 android:layout_marginBottom="300dp"
                 app:srcCompat="@drawable/cloud" />
+            <ImageView
+                android:id="@+id/sun_tsk"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/main_block"
+                android:layout_alignEnd="@+id/main_block"
+                android:layout_alignBottom="@+id/main_block"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="300dp"
+                app:srcCompat="@drawable/sun" />
+            <ImageView
+                android:id="@+id/rain_tsk"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/main_block"
+                android:layout_alignEnd="@+id/main_block"
+                android:layout_alignBottom="@+id/main_block"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="300dp"
+                app:srcCompat="@drawable/rain" />
 
 
         </RelativeLayout>
@@ -265,6 +290,33 @@
 
             <ImageView
                 android:id="@+id/cloud_spb"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/main_sample_spb"
+                android:layout_alignEnd="@+id/main_sample_spb"
+                android:layout_alignBottom="@+id/main_sample_spb"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="300dp"
+                app:srcCompat="@drawable/cloud" />
+
+            <ImageView
+                android:id="@+id/sun_spb"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/main_sample_spb"
+                android:layout_alignEnd="@+id/main_sample_spb"
+                android:layout_alignBottom="@+id/main_sample_spb"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="300dp"
+                app:srcCompat="@drawable/sun" />
+
+            <ImageView
+                android:id="@+id/rain_spb"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/main_sample_spb"
